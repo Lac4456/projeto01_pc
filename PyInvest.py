@@ -26,14 +26,24 @@ taxFii = (rentFii/100)
 taxPoup = (0.5/100)
 
 #calculo cdb
-montanteCdb = (capitalI * math.pow(1+taxCdb), mesesI) + (aporteM * mesesI)
+montanteCdb = (capitalI * math.pow(1+taxCdb, mesesI)) + (aporteM * mesesI)
 lucroCdb = montanteCdb - totalInv
 montanteCdbF = totalInv + (lucroCdb * 0.85)
 
 #calculo lci
-montanteLci = (capitalI * math.pow(1+taxLci), mesesI) + (aporteM * mesesI)
+montanteLci = (capitalI * math.pow(1+taxLci, mesesI)) + (aporteM * mesesI)
 
 #calculo poupança
-montantePoup = (capitalI * math.pow(1+taxPoup), mesesI) + (aporteM * mesesI)
+montantePoup = (capitalI * math.pow(1+taxPoup, mesesI)) + (aporteM * mesesI)
 
 #calculo FII
+montanteIFii = (capitalI * math.pow(1+taxFii, mesesI)) + (aporteM * mesesI)
+val1 = montanteIFii + random.uniform(-0.03, 0.03) * montanteIFii
+val2 = montanteIFii + random.uniform(-0.03, 0.03) * montanteIFii
+val3 = montanteIFii + random.uniform(-0.03, 0.03) * montanteIFii
+val4 = montanteIFii + random.uniform(-0.03, 0.03) * montanteIFii
+val5 = montanteIFii + random.uniform(-0.03, 0.03) * montanteIFii
+
+mediaFii = st.mean((val1, val2, val3, val4, val5))
+medianaFii = st.median((val1, val2, val3, val4, val5))
+desvioFii = st.stdev((val1, val2, val3, val4, val5))
