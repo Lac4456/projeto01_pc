@@ -47,3 +47,53 @@ val5 = montanteIFii + random.uniform(-0.03, 0.03) * montanteIFii
 mediaFii = st.mean((val1, val2, val3, val4, val5))
 medianaFii = st.median((val1, val2, val3, val4, val5))
 desvioFii = st.stdev((val1, val2, val3, val4, val5))
+
+#datas
+datahojeI = datetime.datetime.now()
+dataresF = datahojeI + datetime.timedelta(days= mesesI * 30)
+
+#barras para o grafico
+barraCdb = int(montanteCdbF/1000)
+barraLci = int(montanteLci/1000)
+barraPoup = int(montantePoup/1000)
+barraFii = int(mediaFii/1000)
+
+#outputs
+
+print(f"{"SIMULADOR PYINVEST":^60}")
+
+print(f"Data da simulação: {datahojeI.strftime("%d/%m/%Y")}")
+print(f"Data estimada de resgate: {dataresF.strftime("%d/%m/%Y")}")
+
+print("="*60)
+
+print(f"Total investido: {locale.currency(totalInv, grouping=True)}")
+
+print(f"{"RESULTADOS":^20}")
+
+print(f"CDB: {locale.currency(montanteCdbF, grouping=True)}")
+print(f"█"*barraCdb)
+
+print(f"LCI/LCA: {locale.currency(montanteLci, grouping=True)}")
+print(f"█"*barraLci)
+
+print(f"Poupança: {locale.currency(montantePoup, grouping=True)}")
+print(f"█"*barraPoup)
+
+print(f"FII (média): {locale.currency(mediaFii, grouping=True)}")
+print(f"█"*barraFii)
+
+print(f"{"ESTATISTICAS FII":^20}")
+print(f"Mediana: {locale.currency(medianaFii, grouping=True)}")
+print(f"Desvio padrão: {locale.currency(desvioFii, grouping=True)}")
+#verificar se a meta inicial foi atingida
+metaF = max(montanteCdbF, montanteLci, montantePoup, mediaFii) >= metaI
+print(f"Meta atingida? {metaF}")
+print("="*60)
+
+#referencias:
+#PDF Aula 1, pag. 68 e 71
+#https://docs.python.org/3/library/datetime.html#examples-of-usage-date
+#https://docs.python.org/3/library/functions.html#max
+
+
